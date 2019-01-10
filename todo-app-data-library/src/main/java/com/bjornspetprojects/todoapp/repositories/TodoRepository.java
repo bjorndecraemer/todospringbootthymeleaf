@@ -1,7 +1,7 @@
 package com.bjornspetprojects.todoapp.repositories;
 
 import com.bjornspetprojects.todoapp.model.Todo;
-import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.repository.CrudRepository;
 
-public abstract class TodoRepository implements JpaRepository<Todo,Long> {
+public interface TodoRepository extends CrudRepository<Todo,Long> {
 }

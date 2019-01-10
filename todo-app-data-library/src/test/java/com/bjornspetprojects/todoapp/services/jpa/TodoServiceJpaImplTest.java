@@ -13,6 +13,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
@@ -48,7 +49,7 @@ class TodoServiceJpaImplTest {
     @Test
     void findAll() {
         when(todoRepository.findAll()).thenReturn(defaultReturnList);
-        List<Todo> allFound = todoService.findAll();
+        Set<Todo> allFound = todoService.findAll();
         assertNotNull(allFound);
         assertEquals(2,allFound.size());
     }
