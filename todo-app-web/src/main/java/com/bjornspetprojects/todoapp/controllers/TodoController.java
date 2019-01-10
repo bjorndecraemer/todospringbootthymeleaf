@@ -2,11 +2,12 @@ package com.bjornspetprojects.todoapp.controllers;
 
 import com.bjornspetprojects.todoapp.services.TodoService;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+@RequestMapping("todos")
 @Controller
-@RequestMapping("/todos")
 public class TodoController {
 
     private final TodoService todoService;
@@ -16,8 +17,9 @@ public class TodoController {
     }
 
     @GetMapping
-    public String getAllTodos(){
-        return "";
+    public String getAllTodos(Model model){
+        model.addAttribute("todos",todoService.findAll());
+        return "todolist";
     }
 
 }

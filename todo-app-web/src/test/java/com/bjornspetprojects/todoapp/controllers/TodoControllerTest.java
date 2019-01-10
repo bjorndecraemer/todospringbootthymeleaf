@@ -14,7 +14,6 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import java.util.HashSet;
 import java.util.Set;
 
-import static org.mockito.Mockito.verifyZeroInteractions;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
@@ -46,6 +45,5 @@ class TodoControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(view().name("todolist"))
                 .andExpect(model().attributeExists("todos"));
-        verifyZeroInteractions(todoService);
     }
 }

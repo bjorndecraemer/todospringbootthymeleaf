@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Todo List</title>
+</head>
+<body>
+<table>
+    <thead>
+        <tr>
+            <td>Id</td>
+            <td>Created</td>
+            <td>Title</td>
+            <td>Description</td>
+            <td>Status</td>
+        </tr>
+    </thead>
+    <tbody>
+    <!--@Column(name = "title")-->
+    <!--private String title;-->
+    <!--@Column(name = "description")-->
+    <!--private String description;-->
+    <!--@Column(name = "created_on")-->
+    <!--private LocalDateTime createdOn;-->
+    <!--@Column(name = "completed")-->
+    <!--private Boolean done = false;-->
+    <!--@Column(name = "completed_date")-->
+    <!--@Nullable-->
+    <!--private LocalDateTime finishedDate;-->
+    <tr th:each="todo : ${todos}" >
+        <td th:text="${todo.id}"></td>
+        <td th:text="${todo.createdOn}"></td>
+        <td th:text="${todo.title}"></td>
+        <td th:text="${todo.description}"></td>
+        <td th:text="${todo.done}"></td>
+
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>
