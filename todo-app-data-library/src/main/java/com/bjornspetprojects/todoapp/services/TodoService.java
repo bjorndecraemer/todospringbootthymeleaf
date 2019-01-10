@@ -5,5 +5,5 @@ import com.bjornspetprojects.todoapp.model.Todo;
 import java.util.List;
 
 public interface TodoService extends CrudService<Todo,Long>{
-    public List<Todo> findAllLikeTitle();
+    List<Todo> findAllLikeTitle(String part);
 }
