@@ -10,6 +10,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -39,4 +40,7 @@ public class Todo extends BaseEntity{
     @Column(name = "completed_date")
     @Nullable
     private LocalDateTime finishedDate;
+    public String getCreatedOnFriendlyFormat(){
+        return createdOn.format(DateTimeFormatter.ofPattern("d MMM uuuu "));
+    }
 }
