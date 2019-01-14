@@ -6,6 +6,23 @@ height: 80px;
 background-color: #ccf5f5;
 }
 
+main{
+  margin-bottom: 80px;
+}
+
 .todosJumbo{
   padding-top: 80px;
+}
+
+.todo-card-date{
+  float: left;
+}
+
+.todo-card-delete{
+  float: right;
+}
+
+.todo-card{
+  height: 98%;
+  width: auto;
 }

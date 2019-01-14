@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Todo form</title>
+    <link rel="stylesheet" th:href="@{/resources/css/todos.css}"/>
+    <script th:src="@{/resources/js/todos.js}"></script>
+</head>
+<body>
+
+<div th:insert="fragments/navbar :: navbar">
+</div>
+<main role="main" class="flex-shrink-0">
+    <div class="album py-5 bg-light">
+        <form th:object="${todo}" class="form-horizontal" id="add-todo-form" method="post">
+            <div class="formGroup">
+                <label for="title">Title</label>
+                <input class="form-control" type="text" id="title" th:field="*{title}">
+            </div>
+            <div class="formGroup">
+                <label for="description">Description</label>
+                <input class="form-control" type="text" id="description" th:field="*{description}">
+            </div>
+            <button
+                    th:with="text=${todo['new']} ? 'Add Todo' : 'Update Todo'"
+                    class="btn btn-default" type="submit" th:text="${text}">Add
+                Todo</button>
+        </form>
+    </div>
+</main>
+</body>
+</html>

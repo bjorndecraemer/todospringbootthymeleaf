@@ -13,7 +13,6 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
@@ -48,8 +47,8 @@ class TodoServiceJpaImplTest {
 
     @Test
     void findAll() {
-        when(todoRepository.findAll()).thenReturn(defaultReturnList);
-        Set<Todo> allFound = todoService.findAll();
+        when(todoRepository.findAll(todoService.sortByCreatedOnDesc())).thenReturn(defaultReturnList);
+        List<Todo> allFound = todoService.findAll();
         assertNotNull(allFound);
         assertEquals(2,allFound.size());
     }
@@ -92,7 +91,7 @@ class TodoServiceJpaImplTest {
 
     @Test
     void findAllLikeTitle_1_Result() {
-        when(todoRepository.findAll()).thenReturn(defaultReturnList);
+        when(todoRepository.findAll(todoService.sortByCreatedOnDesc())).thenReturn(defaultReturnList);
         List<Todo> results = todoService.findAllLikeTitle(LIKE_TITLE_WALK);
         assertNotNull(results);
         assertEquals(1,results.size());
@@ -100,14 +99,14 @@ class TodoServiceJpaImplTest {
     }
     @Test
     void findAllLikeTitle_2_Results() {
-        when(todoRepository.findAll()).thenReturn(defaultReturnList);
+        when(todoRepository.findAll(todoService.sortByCreatedOnDesc())).thenReturn(defaultReturnList);
         List<Todo> results = todoService.findAllLikeTitle(LIKE_TITLE_2_RESULTS);
         assertNotNull(results);
         assertEquals(2,results.size());
     }
     @Test
     void findAllLikeTitle_No_Results() {
-        when(todoRepository.findAll()).thenReturn(defaultReturnList);
+        when(todoRepository.findAll(todoService.sortByCreatedOnDesc())).thenReturn(defaultReturnList);
         List<Todo> results = todoService.findAllLikeTitle(LIKE_TITLE_NO_RESULTS);
         assertNotNull(results);
         assertEquals(0,results.size());

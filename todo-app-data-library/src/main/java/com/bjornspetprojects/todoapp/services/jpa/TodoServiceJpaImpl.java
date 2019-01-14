@@ -3,11 +3,10 @@ package com.bjornspetprojects.todoapp.services.jpa;
 import com.bjornspetprojects.todoapp.model.Todo;
 import com.bjornspetprojects.todoapp.repositories.TodoRepository;
 import com.bjornspetprojects.todoapp.services.TodoService;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 import java.util.stream.Collectors;
 
 @Service
@@ -36,10 +35,8 @@ public class TodoServiceJpaImpl implements TodoService {
     }
 
     @Override
-    public Set<Todo> findAll() {
-        Set<Todo> results = new HashSet<>();
-        todoRepository.findAll().forEach(results::add);
-        return results;
+    public List<Todo> findAll() {
+        return todoRepository.findAll(sortByCreatedOnDesc());
     }
 
     @Override
@@ -55,5 +52,13 @@ public class TodoServiceJpaImpl implements TodoService {
     @Override
     public void deleteById(Long id) {
         todoRepository.deleteById(id);
+    }
+
+    @Override
+    public Sort sortByCreatedOnDesc() {
+        return new Sort(Sort.Direction.DESC, "createdOn")
+                .and(new Sort(Sort.Direction.ASC, "title")
+                .and(new Sort(Sort.Direction.DESC, "id"))
+                );
     }
 }
